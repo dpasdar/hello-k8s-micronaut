@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: hello-micronaut
+  server:
+    port: 8899
+
+
+mongodb:
+  uri: mongodb://localhost:27017/test
+  database-name: test
+  collection-name: test

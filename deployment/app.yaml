@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-micronaut
+  labels:
+    app: hello-micronaut
+spec:
+  ports:
+    - name: http
+      port: 8899
+  selector:
+    app: hello-micronaut
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-micronaut
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-micronaut
+        version: v1
+    spec:
+      containers:
+        - name: hello-micronaut
+          image: eu.gcr.io/clear-ranger-259311/hello-micronaut:0.1
+          imagePullPolicy: Always
+          env:
+            - name: MONGODB_HOST
+              value: mongodb
+          ports:
+            - containerPort: 8899
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8899
+            initialDelaySeconds: 5
+            periodSeconds: 5
