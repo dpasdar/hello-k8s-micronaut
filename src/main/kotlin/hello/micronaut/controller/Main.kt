@@ -12,7 +12,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 import javax.validation.Valid
 
-@Controller("/random")
+@Controller("/docs")
 class HelloController(@Inject val mongoAccess: MongoAccess) {
 
     @Get(produces = [MediaType.APPLICATION_JSON])

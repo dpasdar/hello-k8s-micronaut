@@ -24,7 +24,7 @@ spec:
         version: v1
     spec:
       containers:
-        - name: hello-micronaut
+        - name: hello-micronaut-app
           image: eu.gcr.io/clear-ranger-259311/hello-micronaut:0.1
           imagePullPolicy: Always
           env:
@@ -34,7 +34,7 @@ spec:
             - containerPort: 8899
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 8899
             initialDelaySeconds: 5
-            periodSeconds: 5
+            periodSeconds: 10

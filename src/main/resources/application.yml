@@ -3,6 +3,9 @@ micronaut:
     name: hello-micronaut
   server:
     port: 8899
+  endpoints:
+    health:
+      enabled: true
 
 
 mongodb:
